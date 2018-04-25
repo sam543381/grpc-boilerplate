@@ -1,0 +1,20 @@
+{
+  "name": "some-stateless-grpc-service",
+  "version": "1.0.0",
+  "description": "Meant to be changed",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "sam543381",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "grpc": "^1.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^9.6.6"
+  }
+}

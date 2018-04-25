@@ -1,0 +1,19 @@
+
+syntax = "proto3";
+
+package test;
+
+message Request {
+    string name = 1;
+}
+
+message Response {
+    string payload = 1;
+}
+
+service Example {
+
+    rpc sendMessage (Request) returns (Response) {}
+    rpc sendMultipleMessages(stream Request) returns (stream Response) {}
+
+}
