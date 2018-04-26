@@ -1,5 +1,5 @@
 {
-  "name": "some-stateless-grpc-service",
+  "name": "grpc-boilerplate",
   "version": "1.0.0",
   "description": "Meant to be changed",
   "main": "index.js",
@@ -12,9 +12,7 @@
   "author": "sam543381",
   "license": "UNLICENSED",
   "dependencies": {
-    "grpc": "^1.10.1"
-  },
-  "devDependencies": {
+    "grpc": "^1.10.1",
     "@types/node": "^9.6.6"
   }
 }
