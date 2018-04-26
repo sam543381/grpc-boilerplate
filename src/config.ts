@@ -2,17 +2,22 @@ import { ServerCredentials } from "grpc";
 
 const config = {
 
-    proto: {
-        path: 'definition.proto',
-        address: 'localhost:50051'
-    },
-
-    addresses: {
-        'test.Example': {
+    servers: {
+        'default': {
             address: 'localhost:50051',
             credentials: undefined // => security disabled
         }
-    }
+    },
+
+    services: {
+        'test.Example': {
+            definition: 'proto/example.proto',
+            remote: {
+                address: 'localhost:50051',
+                credentials: undefined // => security disabled
+            }
+        }
+    },
 
 }
 

@@ -1,4 +1,4 @@
-import proto from "./proto";
+import config from "../config";
 
 export default interface Service {
 
@@ -15,6 +15,10 @@ export function getServiceIdentifier(service: Service) {
 
 export function inferServiceConnectionInfos(service: Service) {
 
-    return proto.addresses[getServiceIdentifier(service)]
+    let id = getServiceIdentifier(service)
+    let conf = config.services[id]
+    if (!conf) throw new Error(`Service with identifier ${id} is not configured.`)
+    if (!conf.remote) throw new Error(`No remote service with identifier ${id}. Configured services are ${Object.keys(config.services).join(',')}`)
 
+    return conf.remote
 }

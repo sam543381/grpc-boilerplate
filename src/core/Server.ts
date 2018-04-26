@@ -2,13 +2,17 @@
 import { ServerCredentials, Server as S } from "grpc";
 import { fatal, error, log } from "./logger";
 import Service from "./Service";
-import proto, { get } from "./proto";
 import config from "../config";
+import { getDefinition } from "./proto";
 
-export function createFromConfig(): Server {
+export function createFromConfig(name: string): Server {
 
-    let address = config.proto.address
-    let credentials = config.proto['credentials']
+    let conf = config.servers[name]
+
+    if (!conf) throw new Error(`No server with name ${name} in config. Avaible servers arer ${Object.keys(config.servers).join(',')}`)
+
+    let address = conf.address
+    let credentials = conf.credentials
 
     return new Server(address, credentials)
 
@@ -59,7 +63,7 @@ export default class Server {
 
         services.forEach(service => {
 
-            let definition = get(service).service
+            let definition = getDefinition(service).service
             let rpcs = Object.keys(definition)
 
             let serviceConfig = {}

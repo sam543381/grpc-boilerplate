@@ -1,7 +1,7 @@
 import Service, { inferServiceConnectionInfos } from "./Service";
-import proto, { get } from "./proto";
 import config from "../config";
 import { credentials as c, ServerCredentials } from 'grpc'
+import { getDefinition } from "./proto";
 
 export default function provideClient(service: Service, address: string = undefined, credentials: ServerCredentials = undefined) {
 
@@ -14,7 +14,7 @@ export default function provideClient(service: Service, address: string = undefi
     if (credentials === undefined)
         credentials = c.createInsecure()
 
-    let constructor = get(service)
+    let constructor = getDefinition(service)
     return new constructor(address, credentials)
 
 }

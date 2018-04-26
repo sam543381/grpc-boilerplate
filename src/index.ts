@@ -4,14 +4,14 @@ import provideClient from "./core/Client";
 import { log } from "./core/logger";
 
 /*
- * This example creates a simple server (see 'ExampleService.ts') compliant
+ * This example creates a simple gRPC server (see 'ExampleService.ts') compliant
  * with the ProtoculBuffers definition (see 'definition.proto').
  * Along with a client that trigger a simple RPC call ('sendMessage')
  * And a more complex bidirectional streaming RPC call ('sendMultipleMessages')
 */
 
 let example = new ExampleService()
-let server = createFromConfig()
+let server = createFromConfig('default')
 
 server.addService(example)
 server.start()
@@ -19,7 +19,7 @@ server.start()
 let client = provideClient({
     name: 'Example',
     package: 'test'
-}, 'localhost:50051')
+})
 
 log('\nStarting client calls:')
 
