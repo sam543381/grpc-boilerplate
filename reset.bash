@@ -19,7 +19,10 @@ echo ''
 echo ' -> Excluding setup script from git'
 echo 'reset.bash' >> .gitignore
 echo '' > src/index.ts
+
 rm -f src/ExampleService.ts
+rm -f proto/example.proto
+
 echo ''
 
 echo 'Done.'
