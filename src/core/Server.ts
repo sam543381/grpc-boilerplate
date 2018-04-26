@@ -49,7 +49,7 @@ export default class Server {
                     }
 
                     if (res instanceof Promise)
-                        res.then(r => callback(null, res))
+                        res.then(r => callback(null, r))
                     else
                         callback(null, res)
 
